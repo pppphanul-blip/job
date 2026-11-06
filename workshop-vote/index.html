@@ -108,7 +108,7 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
   </header>
 
   <section class="card" aria-labelledby="q0">
-    <div class="qhead"><h2 id="q0"><label for="name">이름</label></h2><span class="hint">집계에 응답자 이름으로 표시됩니다</span></div>
+    <div class="qhead"><h2 id="q0"><label for="name">이름</label></h2><span class="hint">같은 이름으로 다시 저장하면 이전 응답이 바뀝니다. 이름은 집계에 표시되지 않습니다</span></div>
     <input class="name" id="name" type="text" maxlength="20" placeholder="예) 홍길동" autocomplete="name">
   </section>
 
@@ -243,17 +243,6 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   function setStatus(t, cls){ const s=$("status"); s.textContent=t; s.className="status"+(cls?" "+cls:""); }
 
-  function applyMine(){
-    const nm = $("name").value.trim();
-    if (!nm || state.days.size || state.dates.size) return;
-    const mine = state.votes.find(v => v.name === nm);
-    if (mine){
-      (mine.days||[]).forEach(d => { const i=DAYS.indexOf(d)+1; if(i>0) state.days.add(i); });
-      (mine.dates||[]).forEach(k => state.dates.add(k));
-      setStatus(`${nm} 님의 기존 응답을 불러왔습니다. 고친 뒤 다시 저장할 수 있습니다.`, "ok");
-    }
-  }
-
   async function load(){
     if (!URL_){ $("setup").hidden = false; setStatus("응답 저장소가 연결되지 않아 저장할 수 없습니다.","err"); render(); return; }
     try {
@@ -261,14 +250,12 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       const data = await res.json();
       state.votes = Array.isArray(data.votes) ? data.votes : [];
       setStatus("이름을 입력하고 요일과 날짜를 고른 뒤 저장해 주세요.");
-      applyMine();
     } catch(e){
       setStatus("집계를 불러오지 못했습니다. 잠시 후 새로고침해 주세요.","err");
     }
     render();
   }
 
-  $("name").addEventListener("change", applyMine);
   $("clear").addEventListener("click", ()=>{ state.days.clear(); state.dates.clear(); render(); });
   $("reload").addEventListener("click", load);
 
