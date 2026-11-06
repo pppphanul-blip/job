@@ -139,7 +139,6 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       <div>
         <h3>응답 인원</h3>
         <div class="big" id="total">0</div>
-        <div class="people" id="people"></div>
       </div>
       <div><h3>선호 요일</h3><div class="rows" id="dayRows"></div></div>
       <div><h3>많이 고른 날짜 TOP 5</h3><div class="rows" id="dateRows"></div></div>
@@ -232,7 +231,6 @@ button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
       b.querySelector(".c").textContent = c ? `${c}명` : "";
     }
     $("total").textContent = n;
-    $("people").textContent = state.votes.map(v=>v.name).join(", ");
     const maxDay = Math.max(1, ...day.slice(1));
     $("dayRows").innerHTML = DAYS.map((l,i)=>row(`${l}요일`, day[i+1], maxDay)).join("");
     const top = Object.entries(date).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])).slice(0,5);
