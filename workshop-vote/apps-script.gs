@@ -34,8 +34,13 @@ function json_(obj) {
     .setMimeType(ContentService.MimeType.JSON);
 }
 
+// 공개 응답에는 이름을 빼고 요일·날짜만 내려줍니다
+function publicVotes_() {
+  return readVotes_().map(v => ({ days: v.days, dates: v.dates }));
+}
+
 function doGet() {
-  return json_({ ok: true, votes: readVotes_() });
+  return json_({ ok: true, votes: publicVotes_() });
 }
 
 function doPost(e) {
@@ -63,7 +68,7 @@ function doPost(e) {
       Utilities.formatDate(new Date(), 'Asia/Seoul', 'yyyy-MM-dd HH:mm')
     ]]);
 
-    return json_({ ok: true, votes: readVotes_() });
+    return json_({ ok: true, votes: publicVotes_() });
   } catch (err) {
     return json_({ ok: false, error: String(err) });
   } finally {
