@@ -306,6 +306,9 @@ a{color:inherit}
 .wfx .pts b{display:block;font-size:24px;font-weight:800;letter-spacing:-.03em}
 .wfx .pts p{font-size:17px;line-height:1.5;color:var(--body);margin-top:4px}
 .wfx .pts .pc{display:inline-block;margin-top:8px;font-size:14px;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--white)}
+.wfx .reqbtn{position:absolute;left:120px;top:836px;display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;background:var(--text);color:#fff;font-size:18px;font-weight:700;text-decoration:none;letter-spacing:-.02em}
+.wfx .reqbtn:hover{background:var(--point)}
+.wfx .reqbtn::after{content:'↗';font-size:15px;opacity:.7}
 .wfx .go{position:absolute;left:120px;top:910px;font-size:18px;font-weight:700;text-decoration:none;border-bottom:2px solid var(--point);padding-bottom:3px}
 .wfx .img{position:absolute;top:96px;left:680px;right:120px;height:880px;border-radius:var(--radius);background:var(--white);padding:20px;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--text)}
 .wfx .img img{width:100%;flex:1;min-height:0;object-fit:contain;object-position:top center;display:block}
@@ -855,6 +858,7 @@ body:hover .pv-ui{opacity:.85}
   <section class="slide gray wfx">
     <div class="ttl"><div class="eyebrow">Part 03 · 적용 예시 · 메인 화면</div><div class="en-t">Main<br>Wireframe</div></div>
     <ul class="pts"><li><span class="num">01</span><div><b>학습 현황을 첫 화면에서 바로 확인</b><p>비주얼 높이를 줄여 학습 현황을 위로 · 이어 학습하기 · 수업 입장으로 바로 학습</p></div></li><li><span class="num">02</span><div><b>레벨테스트 진입 경로 통합</b><p>계약한 테스트만 노출 · 1종이면 바로 이동</p></div></li><li><span class="num">03</span><div><b>진단 결과에 맞는 과정 추천</b><p>레벨테스트 결과 → 학습 이력 → 인기 순으로 추천</p></div></li><li><span class="num">04</span><div><b>콘텐츠 개수와 관계없이 일관된 화면 구성</b><p>고정 그리드 · 1열 가이드 · 0개면 영역 숨김</p></div></li></ul>
+    <a class="reqbtn" href="img/corp_request_main.png" target="_blank" rel="noopener">법인 요청 메인</a>
     <a class="go" href="img/e3_main_wireframe.png" target="_blank" rel="noopener">원본 크게 보기 ↗</a>
     <a class="img" href="img/e3_main_wireframe.png" target="_blank" rel="noopener"><img src="img/e3_main_wireframe.png" alt="PC 메인 와이어프레임 E-3안"><span class="cap">PC 메인 와이어프레임 E-3안 · 로그인 후 · 1440 기준</span></a>
     <div class="ft"><span>B2B LMS 리뉴얼 방향</span><span>18</span></div>
